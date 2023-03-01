@@ -18,7 +18,7 @@ spec:
         app: flaskdemo
     spec:
       containers:
-      - image: ekawafs/python-cicd:latest
+      - image: ekawafs/htmlcicd:latest
         name: flaskdemo
         resources: {}
 status: {}
