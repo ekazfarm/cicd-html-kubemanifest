@@ -10,7 +10,7 @@ node {
     stage('Update GIT') {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    withCredentials([usernamePassword(credentialsId: 'ekazfarmgithub', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    withCredentials([usernamePassword(credentialsId: 'gitlablocal', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GIT_USERNAME')]) {
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config user.email syachferdian4@gmail.com"
                         sh "git config user.name ekazfarm"
@@ -20,7 +20,7 @@ node {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push http://${GIT_USERNAME}:${GIT_PASSWORD}@gitlab.example.com/${GIT_USERNAME}/htmlcicd-kubemanifest.git HEAD:main"
+                        sh "git push http://${GIT_USERNAME}:${GIT_TOKEN}@gitlab.example.com/${GIT_USERNAME}/htmlcicd-kubemanifest.git HEAD:main"
       }
     }
   }
