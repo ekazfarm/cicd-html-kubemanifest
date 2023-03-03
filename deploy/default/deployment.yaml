@@ -27,7 +27,7 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: flaskdemo
+  name: my-service
   namespace: default
   labels:
     app: flaskdemo
