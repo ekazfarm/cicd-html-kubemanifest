@@ -19,7 +19,7 @@ spec:
         app: flaskdemo
     spec:
       containers:
-      - image: ekawafs/htmlcicd:19
+      - image: ekawafs/htmlcicd:20
         name: flaskdemo
         resources: {}
 status: {}
