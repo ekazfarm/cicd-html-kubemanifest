@@ -27,10 +27,10 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service
+  name: flaskdemo
   namespace: default
   labels:
-    app: lb-service
+    app: flaskdemo
 spec:
   type: LoadBalancer
   ports:
