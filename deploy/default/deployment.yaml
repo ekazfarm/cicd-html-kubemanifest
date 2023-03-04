@@ -19,7 +19,7 @@ spec:
         app: htmleka
     spec:
       containers:
-      - image: ekawafs/htmlcicd:latest
+      - image: ekawafs/htmlcicd:35
         name: htmleka
         resources: {}
 status: {}
