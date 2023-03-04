@@ -1,25 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  labels:
-    app: htmleka
-  name: htmleka
+  name: nginxweb
   namespace: default
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app: htmleka
-  strategy: {}
+    matchLabels: 
+      app: nginxweb
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: htmleka
+        app: nginxweb
     spec:
       containers:
-      - image: ekawafs/htmlcicd:35
-        name: htmleka
-        resources: {}
-status: {}
+      - name: nginxweb-container
+        image: ekawafs/htmlcicd:35
+        ports:
+        - containerPort: 80 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginxweb
+  namespace: default
+  labels:
+    app: nginxweb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    nodePort: 31000
+    protocol: TCP
+  selector:
+    app: nginxweb
