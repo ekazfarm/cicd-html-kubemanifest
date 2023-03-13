@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: nginxweb-container
-        image: ekawafs/htmlcicd:41
+        image: ekawafs/htmlcicd:42
         ports:
         - containerPort: 80 
 ---
